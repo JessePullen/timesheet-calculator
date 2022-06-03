@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js" defer></script>
+    <title>Timesheet Calculator</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="top-content">
+            <h1>Timesheet Calculator</h1>
+        </div>
+        <div class="mid-content">
+            <form class="input-form">
+                <div class="input1">
+                    <label for="start-time">Start Time</label>
+                    <input type="text" class="start-time">
+                </div>
+                <div class="input2">
+                    <label for="finish-time">Finish Time</label>
+                    <input type="text" class="finish-time">
+                </div>
+            </form>
+            <div class="result">
+                <p>result</p>
+                <form>
+                    <input type="submit" class="submit">
+                </form>
+            </div>
+            <div class="rules">
+                <form>
+                    <input type="checkbox" class="overtime-6">
+                    <label for="overtime-6">Overtime before/after 6</label>
+                    <input type="radio" class="overtime-8" name="overtime">
+                    <label for="ovetime-8">After 8 Hours</label>
+                    <input type="radio" class="overtime-10" name="overtime">
+                    <label for="overtime-10">After 10 Hours</label>
+                </form>
+            </div>
+        </div>
+        <div class="bottom-content">
+        </div>
+    </div>
+</body>
+
+</html>
