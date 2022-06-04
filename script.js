@@ -49,8 +49,6 @@ function convertTime(time) {
         return parseInt(time);
     } else if (time <= 24) {
         return parseInt(time *= 60);
-    } else {
-        return parseInt(time);
     }
 }
 
