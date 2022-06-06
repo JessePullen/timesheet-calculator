@@ -2,6 +2,7 @@ const submit = document.querySelector('.submit');
 const ot6 = document.querySelector('.overtime-6');
 const ot8 = document.querySelector('.overtime-8');
 const ot10 = document.querySelector('.overtime-10');
+const ot12 = document.querySelector('.overtime-12');
 
 let startTime = 0;
 let finishTime = 0;
@@ -29,6 +30,7 @@ function convertFormat(time) {
         hours = time.slice(0, 2);
         mins = time.slice(2);
     }
+    
     if (mins > 60) {
         return console.log(errorMessage);
     }
