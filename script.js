@@ -8,6 +8,32 @@ let startTime = 0;
 let finishTime = 0;
 let errorMessage = 'error'
 
+let ot6Flag = false;
+let ot8Flag = false;
+let ot10Flag = false;
+let ot12Flag = false;
+
+//Toggles flags to calculate overtime or not
+ot6.addEventListener('click', () => {
+    (ot6Flag === false) ? ot6Flag = true: ot6Flag = false;
+    console.log(ot6Flag);
+})
+
+ot8.addEventListener('click', () => {
+    (ot8Flag === false) ? ot8Flag = true: ot8Flag = false;
+    console.log(ot8Flag);
+})
+
+ot10.addEventListener('click', () => {
+    (ot10Flag === false) ? ot10Flag = true: ot10Flag = false;
+    console.log(ot10Flag);
+})
+
+ot12.addEventListener('click', () => {
+    (ot12Flag === false) ? ot12Flag = true: ot12Flag = false;
+    console.log(ot12Flag);
+})
+
 submit.addEventListener('click', () => {
     const start = document.querySelector('.start-time').value;
     const finish = document.querySelector('.finish-time').value;
