@@ -70,6 +70,16 @@ function convertFormat(time) {
 //Checks number is usable and converts to minutes if only hour is entered
 //Calls convertFormat function if minutes are specified
 function convertTime(time) {
+    let newTime = 0;
+
+    if (time.includes('.')) {
+        newTime = time.replace('.', '');
+        time = newTime;
+    } else if (time.includes(':')) {
+        newTime = time.replace(':', '');
+        time = newTime;
+    }
+
     if (time > 24 && time < 100) {
         return console.log(errorMessage);
     } else if (time >= 100) {
@@ -92,9 +102,13 @@ function calculateTime() {
         finishTime += 720;
     }
 
-    console.log(`start: ${startTime} finish: ${finishTime}`);
+    console.log(`start: ${startTime/60} finish: ${finishTime/60}`);
 
     answer = (finishTime - startTime) / 60;
 
-    console.log(answer);
+    console.log(answer.toFixed(2));
+
+    if (answer === NaN) {
+        console.log(errorMessage);
+    }
 }
