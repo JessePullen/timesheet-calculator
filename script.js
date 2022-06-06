@@ -82,7 +82,7 @@ function convertTime(time) {
 
 //Calculates time difference using loop to iterate minutes between start and finish time
 function calculateTime() {
-    let minutes = 0;
+    let answer = 0;
 
     startTime = convertTime(startTime);
     finishTime = convertTime(finishTime);
@@ -94,14 +94,7 @@ function calculateTime() {
 
     console.log(`start: ${startTime} finish: ${finishTime}`);
 
-    //Stops infinite loops by checking for numbers only
-    if (!Number.isInteger(startTime) || !Number.isInteger(finishTime)) {
-        console.log(errorMessage);
-    } else {
-        while (startTime != finishTime) {
-            minutes++
-            startTime++
-        }
-    }
-    console.log(minutes / 60);
+    answer = (finishTime - startTime) / 60;
+
+    console.log(answer);
 }
