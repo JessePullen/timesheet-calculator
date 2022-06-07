@@ -92,12 +92,32 @@ function convertTime(time) {
     }
 }
 
+//Calculates any time done before 6am as double time in minutes
+function calculateOTBefore6(time) {
+    let mins = 0;
+    while (time != 360) {
+        time++;
+        mins++;
+    }
+    return mins;
+}
+
+//Calculates any time done after 6pm as double time in minutes
+function calculateOTAfter6(time) {
+    let mins = 0;
+    while (time != 1080) {
+        time--;
+        mins++;
+    }
+    return mins;
+}
 
 //Calculates time difference using loop to iterate minutes between start and finish time
 function calculateTime() {
     let answer = 0;
     let overtime = 0;
     let doubleTime = 0;
+    let doubleTimeMins = 0;
 
     startTime = convertTime(startTime);
     finishTime = convertTime(finishTime);
@@ -110,6 +130,19 @@ function calculateTime() {
     console.log(`start: ${startTime / 60} finish: ${finishTime / 60}`);
 
     answer = (finishTime - startTime) / 60;
+
+    if (ot6Flag) {
+        //minutes equivalent to 6 hours 
+        if (startTime < 360) {
+            doubleTimeMins += calculateOTBefore6(startTime);
+        }
+        //minutes equivalent to 18 hours 
+        if (finishTime > 1080) {
+            doubleTimeMins += calculateOTAfter6(finishTime);
+        }
+    }
+    
+    console.log(doubleTimeMins);
 
     if (ot8Flag) {
         if (answer > 8) {
