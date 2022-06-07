@@ -15,22 +15,24 @@ let ot12Flag = false;
 
 //Toggles flags to calculate overtime or not
 ot6.addEventListener('click', () => {
-    (ot6Flag === false) ? ot6Flag = true: ot6Flag = false;
+    (ot6Flag === false) ? ot6Flag = true : ot6Flag = false;
     console.log(ot6Flag);
 })
 
 ot8.addEventListener('click', () => {
-    (ot8Flag === false) ? ot8Flag = true: ot8Flag = false;
+    (ot8Flag === false) ? ot8Flag = true : ot8Flag = false;
+    ot10Flag = false;
     console.log(ot8Flag);
 })
 
 ot10.addEventListener('click', () => {
-    (ot10Flag === false) ? ot10Flag = true: ot10Flag = false;
+    (ot10Flag === false) ? ot10Flag = true : ot10Flag = false;
+    ot8Flag = false;
     console.log(ot10Flag);
 })
 
 ot12.addEventListener('click', () => {
-    (ot12Flag === false) ? ot12Flag = true: ot12Flag = false;
+    (ot12Flag === false) ? ot12Flag = true : ot12Flag = false;
     console.log(ot12Flag);
 })
 
@@ -56,7 +58,7 @@ function convertFormat(time) {
         hours = time.slice(0, 2);
         mins = time.slice(2);
     }
-    
+
     if (mins > 60) {
         return console.log(errorMessage);
     }
@@ -90,25 +92,44 @@ function convertTime(time) {
     }
 }
 
+
 //Calculates time difference using loop to iterate minutes between start and finish time
 function calculateTime() {
     let answer = 0;
+    let overtime = 0;
+    let doubleTime = 0;
 
     startTime = convertTime(startTime);
     finishTime = convertTime(finishTime);
 
     //Accounts for 24 hour time being used as finish time by adding 720 minutes (12 hours)
-    if (startTime > finishTime) {
+    if (startTime > finishTime || startTime === finishTime) {
         finishTime += 720;
     }
 
-    console.log(`start: ${startTime/60} finish: ${finishTime/60}`);
+    console.log(`start: ${startTime / 60} finish: ${finishTime / 60}`);
 
     answer = (finishTime - startTime) / 60;
 
-    console.log(answer.toFixed(2));
-
-    if (answer === NaN) {
-        console.log(errorMessage);
+    if (ot8Flag) {
+        if (answer > 8) {
+            overtime = 8
+            answer -= 8;
+            console.log(`${overtime} and ${answer} at overtime`);
+        }
+    } else if (ot10Flag) {
+        if (answer > 10) {
+            overtime = 10
+            answer -= 10;
+            console.log(`${overtime} and ${answer} at overtime`);
+        }
+    } else if (ot12Flag) {
+        if (answer > 12) {
+            answer -= 12;
+            doubleTime = 12
+            console.log(`${doubleTime} and ${answer} at overtime`);
+        }
+    } else {
+        console.log(answer.toFixed(2));
     }
 }
