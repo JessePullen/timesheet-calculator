@@ -2,25 +2,29 @@
     font-family: Robots, sans-serif;
 }
 
-.container {
+body {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
+    justify-content: center;
 }
 
-.mid-content {
+h1 {
+    font-weight: 100;
+}
+
+.container {
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
+    width: 500px;
 }
 
 .result {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 300px;
+    margin-top: 20px;
 }
 
 .input-form {
